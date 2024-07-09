@@ -268,7 +268,14 @@ require('lazy').setup({
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_fold_enabled = 1
+      vim.g.tex_conceal = ''
       vim.g.vimtex_view_method = 'sioyek'
+      vim.g.vimtex_compiler_latexmk = {
+        aux_dir = 'aux',
+        -- callback = 1,
+        -- continuous = 0,
+      }
     end,
   },
   --
