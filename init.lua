@@ -283,7 +283,7 @@ require('lazy').setup({
       vim.g.vimtex_compiler_latexmk = {
         aux_dir = 'aux',
         -- callback = 1,
-        -- continuous = 0,
+        -- continuous = 1,
       }
     end,
   },
@@ -803,6 +803,9 @@ require('lazy').setup({
 
   { -- catppuccin colorscheme
     'catppuccin/nvim',
+    opts = {
+      transparent_background = true,
+    },
     name = 'catppuccin',
     priority = 1000,
     init = function()
