@@ -270,6 +270,10 @@ require('lazy').setup({
     },
   },
 
+  -- Installing diffview
+  {
+    'sindrets/diffview.nvim',
+  },
   -- Installing vimtex for LaTeX
   {
     'lervag/vimtex',
