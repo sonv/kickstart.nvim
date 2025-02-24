@@ -105,7 +105,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -249,6 +249,8 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
+  { 'dhruvasagar/vim-table-mode' },
+
   -- add Fugitive
   { 'tpope/vim-fugitive' },
 
@@ -281,8 +283,16 @@ require('lazy').setup({
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_syntax_enabled = 0
+      vim.g.vimtex_syntax_conceal_disable = 1
       vim.g.vimtex_fold_enabled = 1
-      vim.g.tex_conceal = ''
+      vim.g.vimtex_log_ignore = {
+        'Underfull',
+        'Overfull',
+        'specifier changed to',
+        'Token not allowed in PDF string',
+      }
+
       vim.g.vimtex_view_method = 'sioyek'
       vim.g.vimtex_compiler_latexmk = {
         aux_dir = 'aux',
@@ -815,6 +825,13 @@ require('lazy').setup({
     init = function()
       vim.cmd.colorscheme 'catppuccin'
     end,
+  },
+
+  {
+    'chomosuke/typst-preview.nvim',
+    lazy = false, -- or ft = 'typst'
+    version = '1.*',
+    opts = {}, -- lazy.nvim will implicitly calls `setup {}`
   },
 
   --  { -- You can easily change to a different colorscheme.
