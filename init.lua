@@ -648,7 +648,8 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua',
+        'tinymist', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -661,6 +662,16 @@ require('lazy').setup({
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
+          end,
+
+          ['tinymist'] = function()
+            require('lspconfig')['tinymist'].setup {
+              capabilities = capabilities,
+              settings = {
+                formatterMode = 'typstyle',
+                exportPdf = 'never',
+              },
+            }
           end,
         },
       }
@@ -742,9 +753,14 @@ require('lazy').setup({
     },
     config = function()
       -- See `:help cmp`
+      require('luasnip.loaders.from_lua').load { paths = '~/.config/nvim/lua/snippets/' }
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      luasnip.config.setup {}
+      luasnip.config.setup {
+        enable_autosnippets = true,
+        region_check_events = 'InsertEnter',
+        delete_check_events = 'InsertLeave',
+      }
 
       cmp.setup {
         snippet = {
