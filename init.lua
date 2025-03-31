@@ -278,29 +278,49 @@ require('lazy').setup({
   },
 
   -- Installing snacks to preview live
-  {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  ---@type snacks.Config
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    explorer = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    picker = { enabled = true },
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    scope = { enabled = true },
-    scroll = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
-  },
-},
+  --  {
+  --    'folke/snacks.nvim',
+  --    priority = 1000,
+  --    lazy = false,
+  --    ---@type snacks.Config
+  --    opts = {
+  --      -- your configuration comes here
+  --      -- or leave it empty to use the default settings
+  --      -- refer to the configuration section below
+  --      bigfile = { enabled = true },
+  --      dashboard = { enabled = true },
+  --      explorer = { enabled = true },
+  --      indent = { enabled = true },
+  --      input = { enabled = true },
+  --      picker = { enabled = true },
+  --      notifier = { enabled = true },
+  --      quickfile = { enabled = true },
+  --      scope = { enabled = true },
+  --      scroll = { enabled = false },
+  --      statuscolumn = { enabled = true },
+  --      words = { enabled = true },
+  --      image = {
+  --        ---@class snacks.image.Config
+  --        enabled = true,
+  --        doc = {
+  --          -- enable image viewer for documents
+  --          -- a treesitter parser must be available for the enabled languages.
+  --          -- supported language injections: markdown, html
+  --          enabled = true,
+  --          -- render the image inline in the buffer
+  --          -- if your env doesn't support unicode placeholders, this will be disabled
+  --          -- takes precedence over `opts.float` on supported terminals
+  --          inline = false,
+  --          -- render the image in a floating window
+  --          -- only used if `opts.inline` is disabled
+  --          float = true,
+  --          max_width = 40,
+  --          max_height = 40,
+  --        },
+  --      },
+  --    },
+  --  },
+
   -- Installing vimtex for LaTeX
   {
     'lervag/vimtex',
