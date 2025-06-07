@@ -891,8 +891,14 @@ require('lazy').setup({
   {
     'chomosuke/typst-preview.nvim',
     lazy = false, -- or ft = 'typst'
-    version = '1.*',
-    opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+    versions = '1.1.*',
+    opts = {
+      dependencies_bin = {
+        -- if you are using tinymist, just set ['typst-preview'] = "tinymist".
+        ['tinymist'] = 'tinymist',
+        ['websocat'] = nil,
+      },
+    }, -- lazy.nvim will implicitly calls `setup {}`
   },
 
   --  { -- You can easily change to a different colorscheme.
